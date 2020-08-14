@@ -7,7 +7,7 @@ function Footer() {
 			<Container>
 				<Row>
 					<Col className={'text-center'}>
-						<span>Footer Goes Here</span>
+						<span>Mehul Patel 2020.</span>
 					</Col>
 				</Row>
 			</Container>

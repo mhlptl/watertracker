@@ -6,6 +6,8 @@ html {
 body {
 	margin-bottom: 60px;
 	font-family: 'Roboto', sans-serif;
+	background-color: rgba(18, 18, 18, 0.93);
+	color: #f5f5f5;
 }
 
 #footer {
@@ -14,5 +16,11 @@ body {
 	width: 100%;
 	height: 60px;
 	line-height: 60px;
-	background-color: #f5f5f5;
+	/* background-color: #f5f5f5; */
+}
+
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
 }
