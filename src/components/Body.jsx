@@ -9,11 +9,11 @@ const daily = {
 	datasets: [
 		{
 			label: 'Daily Water Intake',
-			backgroundColor: 'rgba(255,99,132,0.2)',
-			borderColor: 'rgba(255,99,132,1)',
+			backgroundColor: 'rgba(0,99,132,0.2)',
+			borderColor: 'rgba(0,99,132,1)',
 			borderWidth: 1,
-			hoverBackgroundColor: 'rgba(255,99,132,0.4)',
-			hoverBorderColor: 'rgba(255,99,132,1)',
+			hoverBackgroundColor: 'rgba(0,99,132,0.4)',
+			hoverBorderColor: 'rgba(0,99,132,1)',
 			data: [0, 0, 0, 0, 0, 0, 0, 0]
 		}
 	]
@@ -39,11 +39,11 @@ const monthly = {
 	datasets: [
 		{
 			label: 'Monthly Water Intake',
-			backgroundColor: 'rgba(255,99,132,0.2)',
-			borderColor: 'rgba(255,99,132,1)',
+			backgroundColor: 'rgba(0,255,132,0.2)',
+			borderColor: 'rgba(0,255,132,1)',
 			borderWidth: 1,
-			hoverBackgroundColor: 'rgba(255,99,132,0.4)',
-			hoverBorderColor: 'rgba(255,99,132,1)',
+			hoverBackgroundColor: 'rgba(0,255,132,0.4)',
+			hoverBorderColor: 'rgba(0,255,132,1)',
 			data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 		}
 	]
@@ -167,6 +167,12 @@ class Body extends Component {
 			let weeklyData = {...this.state.weekly};
 			weeklyData.datasets[0].data[date.weekday()] += parseFloat(amount)
 			this.setState({weekly: weeklyData});
+
+			if(date.day() === now.day()) {
+				let dailyData = {...this.state.daily};
+				dailyData.datasets[0].data[time[date.hour()]] += parseFloat(amount);
+				this.setState({daily: dailyData});
+			}
 		}
 		
 		// const {hour, month, day} = {...this.roundTime()};
@@ -324,6 +330,11 @@ class Body extends Component {
 					</ul>
 					</Col>
 					</Row>
+				</Col>
+			</Row>
+			<Row>
+				<Col>
+					<p className={'note'}>* all data shown are in ounces</p>
 				</Col>
 			</Row>
 		</Container>
