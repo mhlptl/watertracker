@@ -16,7 +16,9 @@ class Graphs extends Component {
 			 show: false,
 			 daily: daily,
 			 weekly: weekly,
-			 monthly: monthly
+			 monthly: monthly,
+			 redraw: true,
+			 active: false
 		}
 	}
 
@@ -64,7 +66,9 @@ class Graphs extends Component {
 	 */
 	showCustom = () => {
 		this.setState(prevState => ({
-			show: !prevState.show
+			show: !prevState.show,
+			redraw: !prevState.redraw,
+			active: !prevState.active
 		}));
 	}
 
@@ -180,7 +184,7 @@ class Graphs extends Component {
 
 	render() {
 
-		const { amount, show, daily, weekly, monthly } = this.state;
+		const { amount, show, daily, weekly, monthly, redraw, active } = this.state;
 		const dailyData = daily.datasets[0].data;
 		const weeklyData = weekly.datasets[0].data;
 		const monthlyData = monthly.datasets[0].data;
@@ -190,19 +194,19 @@ class Graphs extends Component {
 			<Row className={'justify-content-center align-items-center text-center'}>
 				<Col xs={12} md={2}>
 					<br/>
-					<Button value={4} onClick={this.handlePrebuilt}>4 Ounces</Button>
+					<Button value={4} onClick={this.handlePrebuilt} disabled={active}>4 Ounces</Button>
 				</Col>
 				<Col xs={12} md={2}>
 					<br/>
-					<Button value={8} onClick={this.handlePrebuilt}>8 Ounces</Button>
+					<Button value={8} onClick={this.handlePrebuilt} disabled={active}>8 Ounces</Button>
 				</Col>
 				<Col xs={12} md={2}>
 					<br/>
-					<Button value={16} onClick={this.handlePrebuilt}>16 Ounces</Button>
+					<Button value={16} onClick={this.handlePrebuilt} disabled={active}>16 Ounces</Button>
 				</Col>
 				<Col xs={12} md={2}>
 					<br/>
-					<Button value={24} onClick={this.handlePrebuilt}>24 Ounces</Button>
+					<Button value={24} onClick={this.handlePrebuilt} disabled={active}>24 Ounces</Button>
 				</Col>
 				<Col xs={12} md={4}>
 					<br/>
@@ -230,6 +234,7 @@ class Graphs extends Component {
 								</Form.Group>
 							</Form.Row>
 							<Button type={'submit'} variant={'outline-primary'} block>Submit</Button>
+							<Button variant={'outline-danger'} onClick={this.showCustom} block>Cancel</Button>
 						</form>
 					}
 				</Col>
@@ -238,13 +243,13 @@ class Graphs extends Component {
 			<br/>
 			<Row className={'justify-content-center align-items-center text-center'}>
 				<Col xs={12} md={4}>
-					<Bar data={this.state.daily} redraw/>
+					<Bar data={this.state.daily} redraw={redraw}/>
 				</Col>
 				<Col xs={12} md={4}>
-					<Bar data={this.state.weekly} redraw/>
+					<Bar data={this.state.weekly} redraw={redraw}/>
 				</Col>
 				<Col xs={12} md={4}>
-					<Bar data={this.state.monthly} redraw/>
+					<Bar data={this.state.monthly} redraw={redraw}/>
 				</Col>
 			</Row>
 			<br/>
