@@ -1,6 +1,6 @@
 # Water Intake Tracker
 
-![Water Itake Gif](./gifs/WaterItake.gif)
+![Water Intake Gif](./gifs/WaterIntake.gif)
 
 This project displays a graph of a person's water itake for the daily, weekly, and monthly time periods, as well as useful information such as their maxiumum and minimum itake. This project is built using ExpressJS for the backend, and ReactJS for the frontend.
 
